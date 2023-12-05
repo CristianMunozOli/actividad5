@@ -7,5 +7,7 @@ export class PeriodistaUseCases{
     constructor(periodistaRepository: PeriodistaRepository){
         this.periodistaRepository=periodistaRepository;
     }
-    async 
+    async getAllPeriodistas(){
+        return await this.periodistaRepository.getAllPeriodistas();
+    }
 }
