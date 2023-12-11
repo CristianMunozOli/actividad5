@@ -1,0 +1,10 @@
+CREATE TABLE periodistas (
+    id serial PRIMARY KEY,
+    nombre VARCHAR(100),
+    fechaNacimiento DATE
+);
+
+CREATE TABLE recursos (
+    id serial PRIMARY KEY,
+    url VARCHAR(255) 
+);
