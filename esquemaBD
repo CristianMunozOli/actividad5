@@ -8,3 +8,9 @@ CREATE TABLE recursos (
     id serial PRIMARY KEY,
     url VARCHAR(255) 
 );
+
+INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Juan Pérez', '1990-05-15');
+INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('María Rodríguez', '1985-08-22');
+INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Carlos López', '1993-12-10');
+INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Ana Gómez', '1980-04-03');
+INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Luisa Martínez', '1998-11-28');
