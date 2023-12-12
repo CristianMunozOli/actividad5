@@ -9,5 +9,11 @@ export class PeriodistaUseCases{
     }
     async findAll(){
         return await this.periodistaRepository.findAll();
-    }
+    } 
+    async getPeriodistaById(id: number) {
+        return await this.periodistaRepository.getPeriodistaById(id);
+  }
+  async postPeriodista(periodista:Periodista){
+    return await this.periodistaRepository.postPeriodista(periodista);
+  }
 }
