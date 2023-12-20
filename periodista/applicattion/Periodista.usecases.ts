@@ -16,4 +16,10 @@ export class PeriodistaUseCases{
   async postPeriodista(periodista:Periodista){
     return await this.periodistaRepository.postPeriodista(periodista);
   }
+  async updatePeriodista(id:number,periodista:Periodista){
+    return await this.periodistaRepository.updatePeriodista(id,periodista);
+  }
+  async deletePeriodista(id:number){
+    return await this.periodistaRepository.deletePeriodista(id);
+  }
 }

@@ -25,8 +25,26 @@ export default class PeriodistaRepositoryPostgre implements PeriodistaRepository
             return ;
         }
     }
-    async postPeriodista(periodista: Periodista): Promise<Periodista[] | undefined> {
+    async postPeriodista(periodista: Periodista): Promise<Periodista | undefined> {
+       const sql = `insert into periodistas (nombre, fechanacimiento) VALUES ('${periodista.nombre}','${periodista.fechaNacimiento}')`
+       try {
+        if(periodista.nombre && periodista.fechaNacimiento)
+            await executeQuery(sql);
+       } catch (error) {
+        console.error(error);
+       }
+       return periodista;
+    }
+    async updatePeriodista(id: number, periodista: Periodista): Promise<Periodista | undefined> {
+        const sql=`update periodistas set nombre='${periodista.nombre}',fechanacimiento='${periodista.fechaNacimiento}' where id=${id}`;
+        try {
+                await executeQuery(sql);
+           } catch (error) {
+            console.error(error);
+           }
+           return periodista;
+    }
+    async deletePeriodista(id: number): Promise<Periodista> | undefined {
         throw new Error("Method not implemented.");
     }
- 
 }
