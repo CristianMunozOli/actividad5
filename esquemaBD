@@ -13,3 +13,9 @@ INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Juan Pérez', '1990-0
 INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('María Rodríguez', '1985-08-22');
 INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Carlos López', '1993-12-10');
 INSERT INTO periodistas (nombre, fechaNacimiento) VALUES ('Ana Gómez', '1980-04-03');
+
+
+INSERT INTO recursos (url) VALUES ('http://recurso1.html');
+INSERT INTO recursos (url) VALUES ('http://recurso3.html');
+INSERT INTO recursos (url) VALUES ('http://recurso4.html');
+INSERT INTO recursos (url) VALUES ('http://recurso2.html');

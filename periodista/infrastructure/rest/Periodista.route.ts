@@ -52,4 +52,15 @@ router.put('/:id',async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 })
+
+router.delete('/:id',async(req, res) => {
+    try{
+        const id = parseInt(req.params.id);
+        
+        res.json(await periodistaRepository.deletePeriodista(id));
+    }catch(error){
+        console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+})
 export { router as routerPeriodista}

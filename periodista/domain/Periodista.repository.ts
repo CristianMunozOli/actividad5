@@ -5,5 +5,5 @@ export default interface PeriodistaRepository{
     getPeriodistaById(id:number):Promise<Periodista | undefined>;
     postPeriodista(periodista:Periodista): Promise<Periodista|undefined>;
     updatePeriodista(id:number,periodista:Periodista): Promise<Periodista|undefined>;
-    deletePeriodista(id:number): Promise<Periodista>|undefined;
+    deletePeriodista(id:number): Promise<Boolean|undefined>;
 }

@@ -44,7 +44,16 @@ export default class PeriodistaRepositoryPostgre implements PeriodistaRepository
            }
            return periodista;
     }
-    async deletePeriodista(id: number): Promise<Periodista> | undefined {
-        throw new Error("Method not implemented.");
+    async deletePeriodista(id: number): Promise<Boolean | undefined> {
+        const sql=`delete from periodistas where id=${id}`;
+        try {
+            await executeQuery(sql);
+            return true;
+            
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+        
     }
 }
