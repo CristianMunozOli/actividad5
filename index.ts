@@ -17,6 +17,9 @@ app.use(cors(options));
 import { routerPeriodista } from "./periodista/infrastructure/rest/Periodista.route";
 app.use("/api/", routerPeriodista);
 
+import { routerNoticia } from "./noticia/infrastructure/res/Noticia.route";
+app.use("/api/", routerNoticia);
+
 app.listen(process.env.PORT, () => {
   console.log(`Application started on port ${port}`);
 });

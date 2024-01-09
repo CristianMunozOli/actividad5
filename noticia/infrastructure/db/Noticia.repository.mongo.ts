@@ -1,6 +1,6 @@
-import Noticia from "../dominio/Noticia";
-import NoticiaRepository from "../dominio/Noticia.repository";
-import { collections } from "../../context/MongoConnection";
+import Noticia from "../../dominio/Noticia";
+import NoticiaRepository from "../../dominio/Noticia.repository";
+import { collections } from "../../../context/MongoConnection";
 
 export default class NoticiaRepositoryMongo implements NoticiaRepository {
     async getAllNoticias(): Promise<Noticia[] | undefined> {
