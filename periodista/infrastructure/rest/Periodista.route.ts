@@ -2,23 +2,26 @@ import express, { Request, Response} from 'express';
 import PeriodistaRepositoryPostgre from '../../infrastructure/db/periodista.repository.postgre';
 import PeriodistaRepository from '../../domain/Periodista.repository';
 import Periodista from '../../domain/Periodista';
+import { PeriodistaUseCases } from '../../applicattion/Periodista.usecases';
+import NoticiaRepositoryMongo from '../../../noticia/infrastructure/db/Noticia.repository.mongo';
 
 const router = express.Router();
-const periodistaRepository:PeriodistaRepository = new PeriodistaRepositoryPostgre();
+//const periodistaRepository:PeriodistaRepository = new PeriodistaRepositoryPostgre();
+const periodistaUseCases : PeriodistaUseCases = new PeriodistaUseCases(new PeriodistaRepositoryPostgre(), new NoticiaRepositoryMongo());
 
-router.get('/', async(req: Request, res: Response) =>{
+router.get('/periodista/', async(req: Request, res: Response) =>{
     try {
-        const periodistas = await periodistaRepository.findAll();
+        const periodistas = await periodistaUseCases.findAll();
         res.send(periodistas);
     } catch (error) {
         res.send(error);
     }
 });
 
-router.get('/:id', async(req: Request, res: Response) =>{
+router.get('/periodista/:id', async(req: Request, res: Response) =>{
     try {
         const id = parseInt(req.params.id);
-        const periodista = await periodistaRepository.getPeriodistaById(id);
+        const periodista = await periodistaUseCases.getPeriodistaById(id);
         if (periodista) {
             res.send(periodista);
         }else {
@@ -30,10 +33,10 @@ router.get('/:id', async(req: Request, res: Response) =>{
     }
 });
 
-router.post('/',async (req, res) => {
+router.post('/periodista/',async (req, res) => {
     try {
         const periodista:Periodista = req.body;
-        const periodistaCreado = await periodistaRepository.postPeriodista(periodista);
+        const periodistaCreado = await periodistaUseCases.postPeriodista(periodista);
         res.json(periodistaCreado);
     } catch (error) {
         console.log(error);
@@ -41,11 +44,11 @@ router.post('/',async (req, res) => {
     }
 })
 
-router.put('/:id',async (req, res) => {
+router.put('/periodista/:id',async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const periodista:Periodista = req.body;
-        const periodistaActualizado = await periodistaRepository.updatePeriodista(id,periodista);
+        const periodistaActualizado = await periodistaUseCases.updatePeriodista(id,periodista);
         res.json(periodistaActualizado);
     } catch (error) {
         console.log(error);
@@ -53,11 +56,11 @@ router.put('/:id',async (req, res) => {
     }
 })
 
-router.delete('/:id',async(req, res) => {
+router.delete('/periodista/:id',async(req, res) => {
     try{
         const id = parseInt(req.params.id);
         
-        res.json(await periodistaRepository.deletePeriodista(id));
+        res.json(await periodistaUseCases.deletePeriodista(id));
     }catch(error){
         console.log(error);
         res.status(500).json({ error: "Internal Server Error" });

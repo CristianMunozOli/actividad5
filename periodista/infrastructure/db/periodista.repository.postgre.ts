@@ -18,8 +18,16 @@ export default class PeriodistaRepositoryPostgre implements PeriodistaRepository
     async getPeriodistaById(id: number): Promise<Periodista | undefined> {
         const sql = `select * from periodistas where id=${id}`;
         try {
-            const periodistaFromDatabase : Periodista = await executeQuery(sql);
-            return periodistaFromDatabase;
+            const periodistaFromDatabase : any[] = await executeQuery(sql);
+            const periodistaData: any = periodistaFromDatabase[0]
+            const periodista: Periodista = {
+                id: periodistaData.id,
+                nombre: periodistaData.nombre,
+                fechaNacimiento: periodistaData.fechaNacimiento,
+                noticias: periodistaData.noticias
+            }
+            console.log(periodista);
+            return periodista;
         } catch (error) {
             console.error(error);
             return ;

@@ -15,7 +15,7 @@ export class NoticiaUseCases{
         return await this.noticiaRepository.getNoticiaByID(id);
     }
 
-    async getNoticiaByPeriodistaID(id:String){
+    async getNoticiaByPeriodistaID(id:number){
         return await this.getNoticiaByPeriodistaID(id);
     }
 

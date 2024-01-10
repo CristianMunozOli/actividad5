@@ -1,8 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
+import createMongoConnection from "./context/MongoConnection";
 
 dotenv.config();
+
+createMongoConnection()
 
 const app = express();
 const port = process.env.PORT;
