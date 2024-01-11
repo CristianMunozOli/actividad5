@@ -19,12 +19,11 @@ export default class PeriodistaRepositoryPostgre implements PeriodistaRepository
         const sql = `select * from periodistas where id=${id}`;
         try {
             const periodistaFromDatabase : any[] = await executeQuery(sql);
-            const periodistaData: any = periodistaFromDatabase[0]
+            const periodistaData: any = periodistaFromDatabase[0];
             const periodista: Periodista = {
                 id: periodistaData.id,
                 nombre: periodistaData.nombre,
-                fechaNacimiento: periodistaData.fechaNacimiento,
-                noticias: periodistaData.noticias
+                fechaNacimiento: periodistaData.fechanacimiento,
             }
             console.log(periodista);
             return periodista;

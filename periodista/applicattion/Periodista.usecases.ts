@@ -21,9 +21,10 @@ export class PeriodistaUseCases{
       if(periodista && noticias){
           periodista.noticias=noticias;
         }
+      
       return periodista;
       }catch(error){
-        throw new error;
+        return;
       }
   }
   async postPeriodista(periodista:Periodista){
