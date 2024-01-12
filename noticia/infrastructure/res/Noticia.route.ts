@@ -39,4 +39,8 @@ router.post("/noticia/", async (req, res) => {
     }
 });
 
+router.get('/web', async (req,res) => {
+  const noticias = await noticiaRepository.getAllNoticias();
+  res.render('noticias',{noticias});
+})
 export { router as routerNoticia}
